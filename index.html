@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Teachers' Day</title>
+<style>
+  body {
+    margin: 0;
+    padding: 20px;
+    font-family: "Segoe UI", sans-serif;
+    background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+    text-align: center;
+    overflow-x: hidden;
+    color: #333;
+    position: relative;
+  }
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    animation: glow 2s infinite alternate;
+  }
+  @keyframes glow {
+    from { text-shadow: 0 0 15px #ff99cc, 0 0 25px #ff6699; }
+    to { text-shadow: 0 0 25px #66ccff, 0 0 35px #3399ff; }
+  }
+
+  /* Speech Section with Images Beside Box */
+  .speech-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+
+  .speech-images {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  }
+
+  .speech-images img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+    border: 2px solid #ff3366;
+    animation: floatSide 3s ease-in-out infinite alternate;
+  }
+
+  @keyframes floatSide {
+    from { transform: translateY(0px); }
+    to { transform: translateY(-15px); }
+  }
+
+  .speech-box {
+    max-width: 1300px;
+    padding: 25px;
+    background: rgba(239, 201, 233, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    font-size: 1.2rem;
+    line-height: 1.8;
+    text-align: left;
+    animation: fadeIn 3s ease-in-out;
+  }
+
+  .speech-box h2 {
+    text-align: center;
+    color: #ff3366;
+    margin-bottom: 15px;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Teachers Section */
+  .teachers {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+  .teacher-card {
+    background: rgba(242, 211, 237, 0.95);
+    padding: 15px 15px 25px 15px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    flex: 1 1 250px;
+    transition: transform 0.3s;
+    text-align: center;
+  }
+  .teacher-card img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border: 3px solid #ff3366;
+  }
+  .teacher-card:hover { transform: scale(1.05); }
+
+  /* Quotes Carousel */
+  .quote-box {
+    margin: 40px auto;
+    max-width: 600px;
+    font-size: 1.3rem;
+    background: rgba(242, 211, 237, 0.95);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    animation: fadeIn 4s ease-in-out;
+  }
+
+  /* Slideshow */
+  .slideshow-container {
+    max-width: 800px;
+    position: relative;
+    margin: 40px auto;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
+  .slides { display: none; width: 100%; }
+  .slides img { width: 100%; border-radius: 15px; }
+  .prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    padding: 16px;
+    margin-top: -22px;
+    color:rgba(239, 201, 233, 0.95) ;
+    font-weight: bold;
+    font-size: 20px;
+    user-select: none;
+    background: rgba(0,0,0,0.4);
+    transition: 0.3s;
+    border-radius: 5px;
+  }
+  .next { right: 0; }
+  .prev { left: 0; }
+  .prev:hover, .next:hover { background: rgba(0,0,0,0.7); }
+
+  .thumbnails {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+  }
+  .thumbnails img {
+    width: 80px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+    opacity: 0.9;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+  .thumbnails img:hover { transform: scale(1.1); opacity: 1; }
+  .thumbnails img.activeThumb { border: 2px solid #ff3366; opacity: 1; }
+
+  /* Music Button */
+  #musicBtn {
+    margin-top: 10px;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    background: #ff6699;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  #musicBtn:hover { background: #ff3366; transform: scale(1.1); }
+
+  /* Closing Section */
+  .closing {
+    margin: 50px auto;
+    padding: 30px;
+    background: rgba(239, 201, 233, 0.95);
+    border-radius: 20px;
+    max-width: 700px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    animation: fadeIn 3s ease-in-out;
+  }
+  .thankyou {
+    font-size: 2.2rem;
+    color: #ff3366;
+    animation: pulse 1.5s infinite;
+  }
+  @keyframes pulse {0%{transform:scale(1);}50%{transform:scale(1.1);}100%{transform:scale(1);}}
+
+  /* Floating Hearts */
+  .hearts span {
+    position: absolute;
+    bottom: 0;
+    font-size: 24px;
+    color: red;
+    animation: floatUp 5s linear infinite;
+  }
+  @keyframes floatUp { from { transform: translateY(0); opacity:1;} to {transform:translateY(-100vh); opacity:0;} }
+
+  /* Confetti */
+  .confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    opacity: 0.7;
+    top: -10px;
+    pointer-events: none;
+    animation: fall 5s linear forwards;
+    border-radius: 3px;
+  }
+  @keyframes fall { 0% { transform: translateY(0) rotate(0deg); } 100% { transform: translateY(110vh) rotate(360deg);} }
+
+  /* Responsive */
+  @media(max-width:1000px){
+    .speech-container{flex-direction:column;align-items:center;}
+    .speech-images{flex-direction:row;}
+  }
+</style>
+</head>
+<body>
+<h1>🌸 Happy Teachers' Day 🌸</h1>
+
+<!-- Speech Section -->
+<div class="speech-container">
+  <div class="speech-images">
+    <img src="abc.jpg" alt="Teacher cartoon">
+    <img src="Best-Programming-Languages-to-Start-Learning-Today.avif" alt="Programming language">
+    <img src="Cloud-Compute_3000x2000_shutterstock_611605280.webp" alt="Computer image">
+    <img src="cs_programminglanguage_cs242.jpg" alt="Computer image">
+    <img src="programming-languages.avif" alt="Computer image">
+    <img src="download.jpeg" alt="Computer image">
+  </div>
+  <div class="speech-box">
+    <h2>💐 SOME LINES FOR YOU ALL💐</h2>
+    <p>
+      Respected HOD & All My Dear Teachers,<br><br>
+      Today, on Teachers’ Day, I want to express my heartfelt gratitude to each one of you. Your dedication, patience, and guidance have made a huge impact on my journey as a BCA student. From helping us understand complex programming languages to guiding us in projects, every lesson has been invaluable.Teachers’ Day is that special moment in the year when I actually sit back and think about how deeply my life has been influenced by my teachers, and every time I do that, I realize ke shayad words kabhi bhi enough nahi honge to express what I feel. A teacher is not just someone who stands in front of the class and teaches a subject, but someone who slowly, silently, and consistently shapes our future in ways we sometimes don’t even notice at that time. Mujhe lagta hai ke ek teacher ek gardener ki tarah hota hai jo apni mehnat aur patience se ek chhota sa plant ko nurture karta hai, paani deta hai, sunlight tak pahunchata hai, aur phir dheere dheere woh plant ek strong tree ban jaata hai. Exactly isi tarah teachers help us grow step by step, correcting our mistakes, guiding us when we are lost, and motivating us jab hum thak jaate hain.<br>
+      "Ilm ka dariya jo teachers ne hummein bahaya,<br>
+       ek lafz unka humari zindagi mein chhaya."<br><br>
+       Every teacher I have met has left something behind in my life—a lesson, a story, an advice, ya sirf ek smile jo kabhi bhoolti nahi. Kabhi kabhi ek chhoti si baat jo teacher casually bol dete hain becomes a lifelong lesson, and that’s the power they hold. They are like second parents jo humari life ke tough aur easy dono phases mein hamesha saath khade rehte hain. Honestly, main maanta hoon ke agar teachers na hote toh hum sirf books padhkar shayad knowledge le lete, lekin zindagi jeene ka asli tareeka kabhi nahi seekh paate. Because a good teacher not only explains formulas, definitions, or theories but also teaches discipline, respect, patience, aur sabse zaroori cheez—values.<br>
+       "Guru bina jeevan adhoora hai,<br>
+        Har safar mein unka noor zaroora hai."<br><br>
+        Today, on Teachers’ Day, dil karta hai ke main loudly thank you bolun to all the teachers who never gave up on me, even when main khud par doubt karti thi. Aap log students ke liye jitna sacrifice karte ho, jitna hard work karte ho late nights mein papers check karna, har student ko individually samajhna, unki problems solve karna—it’s something hum students kabhi bhi poora repay nahi kar sakte.As final-year students, I now realize how much effort and love goes into shaping us. Your encouragement and belief in our potential have given me the confidence to face challenges, learn from failures, and strive for excellence.<br>
+        "Har muskaan ke peeche teachers ki mehnat hai,<br>
+         Har safalta ke peeche unka pyar hai." <br><br>
+      But still, ek chhoti si dua aur ek heartfelt thank you is the least I can offer. Allah/God aap sabko hamesha sehat, khushi aur lambi zindagi de because you truly deserve the best. Aap log sirf ek profession ka part nahi ho, aap log toh ek mission par ho ek mission to make society better, to create responsible individuals, and to spread knowledge that never dies. Aur main proudly keh sakti hoon ke jo bhi mai aaj hoon, jo bhi banungi kal, usmein sabse bada contribution mere teachers ka hai. Isiliye Teachers’ Day mere liye sirf ek celebration nahi, balki ek reminder hai ke main apne teachers ki izzat aur unke teachings ko life bhar apne saath carry karun. Once again Happy Teachers’ Day!💖
+    </p>
+  </div>
+</div>
+
+<!-- Teachers Section -->
+<div class="teachers">
+  <div class="teacher-card">
+    <img src="IMG-20250905-WA0002.jpg" alt="Ma'am Priya">
+    <p>Ma'am Veena – "Aap bahut hi sweet aur inspiring hain,C, PHP aur Javascript ke concepts humko pyaar se samjhaye hain.Jo guidance aur support aapne humko diya,Har code aur query mein aapka pyaar dikha diya."</p>
+  </div>
+  <div class="teacher-card">
+    <img src="IMG-20250905-WA0006.jpg" alt="Sir Ramesh">
+    <p>Ma'am Summaiya – Aapne database ke concepts itne clearly samjhaye ke complex queries bhi simple lagti hain. "Tables ho ya queries, sabka raasta dikhaya aapne, Database ka gyaan hum tak pyar se pahunchaya aapne." Thank you for your guidance and patience!.</p>
+  </div>
+  <div class="teacher-card">
+    <img src="Screenshot 2025-09-05 232006.png" alt="Ma'am Anjali">
+    <p>Ma'am Alfiya – Thank you for motivating us and always encouraging our curiosity."HTML aur CSS ke har tag aur style sikhaye aapne,Har webpage ko humne aapke guidance se sajaya aapne."</p>
+  </div>
+  <div class="teacher-card">
+    <img src="Screenshot 2025-09-05 233509.png" alt="Sir Vinod">
+    <p>Sir Kamil – Your patience in teaching java codes has made learning fun and easy."Sir ke funny comments aur thodi strict teaching style,Ne Core Java ko humare liye banaya totally worthwhile."</p>
+  </div>
+  <div class="teacher-card">
+    <img src="Screenshot 2025-09-05 232024.png" alt="Ma'am Shalini">
+    <p>Ma'am Tanzila – Thank you for your kindness and for always guiding us with a smile."Jo React aur Java ke raaste humne seekhe aapke saath Har component aur logic ab lagta hai bilkul saaf.‘Guidance aur patience’ aapke naam,Humara learning journey hua bilkul perfect aur calm."</p>
+  </div>
+  <div class="teacher-card">
+    <img src="IMG-20250905-WA0003.jpg" alt="Sir Amit">
+    <p>Sir Mohsin – Your programming classes have made us confident problem solvers."Python ke har loop aur function ab easy lagte hain,Sir ke funny examples aur jokes ne class ko lively banaya hain."</p>
+  </div>
+  <div class="teacher-card">
+    <img src="Screenshot 2025-09-05 231953.png" alt="Ma'am Rekha">
+    <p>Ma'am Priya – Thank you for teaching us teamwork and project management skills."OS aur SE ke tough concepts ab lagte hain simple,Sir ke guidance aur examples ne kiya sab possible."</p>
+  </div>
+  <div class="teacher-card">
+    <img src="Screenshot 2025-09-05 232105.png" alt="Sir Prakash">
+    <p>Sir Rizwan – "Jo knowledge aapne diye humko networking aur security mein,Har connection aur protocol ab samajh aata hai easily humare liye."</p>
+  </div>
+  <div class="teacher-card">
+    <img src="Screenshot 2025-09-05 232530.png" alt="Ma'am Meena">
+    <p>Ma'am Farzana –You did not thought anything to our class,but still thankyou for helping wherever necessary.</p>
+  </div>
+  <div class="teacher-card">
+    <img src="suhail.jpg" alt="Sir Sandeep">
+    <p>Sir Suhail – Your passion for teaching is contagious and inspiring to us all."Sir apne Advance Java itni funny aur interesting tareeke se sikhayi,Har concept aur code ab hum easily samajh paate hain jokes ke saath."</p>
+  </div>
+  <div class="teacher-card">
+    <img src="Screenshot 2025-09-05 232055.png" alt="Ma'am Neha">
+    <p>Ma'am Sana – Thank you for your constant guidance and belief in our abilities."Data Science ke raaste jo humne aapke saath seekhe,Har algorithm aur insight ab hum clearly dekh paaye.Aapki sweet nature aur hamesha help karne wali guidance,Ne humari learning journey ko banaya bilkul easy aur bright."</p>
+  </div>
+  <div class="teacher-card">
+    <img src="Screenshot 2025-09-05 232045.png" alt="Sir Arjun">
+    <p>Sir Shahrukh – Your lessons will always be remembered as guiding lights in our careers."Har hack aur security protocol ab hum confidently samajh paaye,Thanks to Sir apke examples aur clear teaching way k liye."</p>
+  </div>
+</div>
+
+<!-- Quotes Carousel -->
+<div class="quote-box" id="quoteBox">“A teacher takes a hand, opens a mind, and touches a heart.”</div>
+
+<!-- Slideshow -->
+<div class="slideshow-container">
+  <div class="slides fade"><img src="IMG-20250905-WA0007 copy.jpg" alt="Memory 1"></div>
+  <div class="slides fade"><img src="WhatsApp Image 2025-09-05 at 21.19.09_3b6b69e7.jpg" alt="Memory 2"></div>
+  <div class="slides fade"><img src="IMG-20250905-WA0013.jpg" alt="Memory 2"></div>
+  <div class="slides fade"><img src="IMG-20250905-WA0012.jpg" alt="Memory 2"></div>
+  <div class="slides fade"><img src="WhatsApp Image 2025-09-05 at 21.19.09_69b83c4a.jpg" alt="Memory 2"></div>
+  <div class="slides fade"><img src="IMG-20250905-WA0010.jpg" alt="Memory 2"></div>
+  <div class="slides fade"><img src="IMG-20250905-WA0009.jpg" alt="Memory 2"></div>
+  <div class="slides fade"><img src="WhatsApp Image 2025-09-05 at 21.19.09_a999f4dd.jpg" alt="Memory 2"></div>
+  <div class="slides fade"><img src="WhatsApp Image 2025-09-05 at 18.34.10_833ff353.jpg" alt="Memory 2"></div>
+  <div class="slides fade"><img src="WhatsApp Image 2025-09-05 at 21.46.06_e9ee0b3e.jpg" alt="Memory 2"></div>
+  <a class="prev">&#10094;</a>
+  <a class="next">&#10095;</a>
+</div>
+<div class="thumbnails">
+  <img src="IMG-20250905-WA0007 copy.jpg" class="activeThumb">
+  <img src="WhatsApp Image 2025-09-05 at 21.19.09_3b6b69e7.jpg">
+  <img src="IMG-20250905-WA0013.jpg">
+  <img src="IMG-20250905-WA0012.jpg">
+  <img src="WhatsApp Image 2025-09-05 at 21.19.09_69b83c4a.jpg">
+  <img src="IMG-20250905-WA0010.jpg">
+  <img src="IMG-20250905-WA0009.jpg">
+  <img src="WhatsApp Image 2025-09-05 at 21.19.09_a999f4dd.jpg">
+  <img src="WhatsApp Image 2025-09-05 at 18.34.10_833ff353.jpg">
+  <img src="WhatsApp Image 2025-09-05 at 21.46.06_e9ee0b3e.jpg">
+</div>
+
+<!-- Music -->
+<button id="musicBtn">🎵 Play Music</button>
+<audio id="bgMusic" loop>
+  <source src="Kholo Kholo - Taare Zameen Par 128 Kbps.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Closing Section -->
+<div class="closing">
+  <h2 class="thankyou">🌹 Thank You Dear Teachers 🌹</h2>
+  <p>Your guidance, patience, and inspiration will always stay with us. 💖</p>
+  <div class="hearts" id="hearts"></div>
+</div>
+
+<script>
+  // Floating hearts
+  const heartsContainer=document.getElementById("hearts");
+  function createHeart(){
+    const heart=document.createElement("span");
+    heart.innerHTML="❤️";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.fontSize=Math.random()*20+20+"px";
+    heart.style.animationDuration=(Math.random()*3+3)+"s";
+    heartsContainer.appendChild(heart);
+    setTimeout(()=>heart.remove(),5000);
+  }
+  setInterval(createHeart,800);
+
+  // Confetti
+  function createConfetti() {
+    const confetti = document.createElement("div");
+    confetti.className = "confetti";
+    confetti.style.left = Math.random() * 100 + "vw";
+    confetti.style.backgroundColor = `hsl(${Math.random()*360},70%,60%)`;
+    confetti.style.width = (Math.random()*8+5) + "px";
+    confetti.style.height = confetti.style.width;
+    confetti.style.animationDuration = (Math.random()*3+4) + "s";
+    document.body.appendChild(confetti);
+    setTimeout(() => confetti.remove(), 5000);
+  }
+  setInterval(createConfetti, 300);
+
+  // Music button
+  const musicBtn = document.getElementById("musicBtn");
+  const bgMusic = document.getElementById("bgMusic");
+  let playing=false;
+  musicBtn.addEventListener("click",()=>{
+    if(!playing){bgMusic.play(); musicBtn.textContent="⏸ Pause Music";}
+    else{bgMusic.pause(); musicBtn.textContent="🎵 Play Music";}
+    playing=!playing;
+  });
+
+  // Quotes carousel
+  const quotes=[
+    "“A teacher takes a hand, opens a mind, and touches a heart.”",
+    "“Teaching is the profession that creates all other professions.”",
+    "“The best teachers teach from the heart, not from the book.”",
+    "“Education is the key to success, and teachers are the ones who hold that key.”",
+    "“Teachers plant the seeds of knowledge that grow forever.”"
+  ];
+  let index=0;
+  function changeQuote(){
+    document.getElementById("quoteBox").innerText=quotes[index];
+    index=(index+1)%quotes.length;
+  }
+  setInterval(changeQuote,4000);
+
+  // Slideshow
+  let slideIndex=0;
+  const slides=document.querySelectorAll(".slides");
+  const prev=document.querySelector(".prev");
+  const next=document.querySelector(".next");
+  const thumbnails=document.querySelectorAll(".thumbnails img");
+  function showSlides(n){
+    if(n>=slides.length) slideIndex=0;
+    if(n<0) slideIndex=slides.length-1;
+    slides.forEach(s=>s.style.display="none");
+    thumbnails.forEach(t=>t.classList.remove("activeThumb"));
+    slides[slideIndex].style.display="block";
+    thumbnails[slideIndex].classList.add("activeThumb");
+  }
+  showSlides(slideIndex);
+  function nextSlide(){ slideIndex++; showSlides(slideIndex);}
+  function prevSlide(){ slideIndex--; showSlides(slideIndex);}
+  next.addEventListener("click", nextSlide);
+  prev.addEventListener("click", prevSlide);
+  thumbnails.forEach((thumb,i)=>{ thumb.addEventListener("click",()=>{ slideIndex=i; showSlides(slideIndex); }); });
+  setInterval(nextSlide,4000);
+</script>
+</body>
+</html>
+
+
